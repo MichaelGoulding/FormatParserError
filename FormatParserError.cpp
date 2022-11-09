@@ -18,6 +18,10 @@ public:
             [[unlikely]]
             SetWeAreCrashing();
             FailFast("((size_t(memoryBase) & 0xffff000000000000) == 0)", __FILE__, __FUNCTION__, __LINE__, std::format("memoryBase = {0:016x} - shouldn't be a crazy number, something's wrong", size_t(memoryBase)).c_str());
+
+            // Below works
+            //auto str = std::format("memoryBase = {0:016x} - shouldn't be a crazy number, something's wrong", size_t(memoryBase));
+            //FailFast("((size_t(memoryBase) & 0xffff000000000000) == 0)", __FILE__, __FUNCTION__, __LINE__, str.c_str());
         }
     }
 };
